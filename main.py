@@ -52,9 +52,9 @@ def task_1(use_linalg_formulation=False):
     r3 = calculate_pearson_correlation(smartwatch_data[:,4], smartwatch_data[:,5])
     print(r1, r2, r3)
 
-    plot_scatterplot_and_line(smartwatch_data[:,5], smartwatch_data[:,7], theta1 , 'exercise_intensity', 'calories', 'Data with linear regression')
-    plot_scatterplot_and_line(smartwatch_data[:,2], smartwatch_data[:,3], theta2 , 'avg_pulse', 'max_pulse', 'Data with linear regression')
-    plot_scatterplot_and_line(smartwatch_data[:,4], smartwatch_data[:,5], theta3 , 'duration', 'exercise_intensity', 'Data with linear regression')
+    plot_scatterplot_and_line(smartwatch_data[:,5], smartwatch_data[:,7], theta1 , 'exercise_intensity', 'calories', 'Data with linear regression Exercise_intensity vs Calories', 'Data with linear regression Exercise_intensity vs Calories')
+    plot_scatterplot_and_line(smartwatch_data[:,2], smartwatch_data[:,3], theta2 , 'avg_pulse', 'max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse')
+    plot_scatterplot_and_line(smartwatch_data[:,4], smartwatch_data[:,5], theta3 , 'duration', 'exercise_intensity', 'Data with linear regression Duration vs Exercise_intensity', 'Data with linear regression Duration vs Exercise_intensity')
 
     # TODO: Implement Task 1.2.3: Multiple linear regression
     # Select two additional features, compute the design matrix, and fit the multiple linear regression model.
