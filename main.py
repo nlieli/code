@@ -37,15 +37,24 @@ def task_1(use_linalg_formulation=False):
     # the MSE, and plot the data points together with the linear function.
     # Repeat the process for 3 pairs of features that do not have a meaningful linear relationship.
     # for col in smartwatch_data[]
-    r1 = calculate_pearson_correlation(smartwatch_data[:, 5], smartwatch_data[: ,7])
-    print(r1)
-    theta1 = fit_univariate_lin_model(smartwatch_data[:, 5], smartwatch_data[:, 7])
-    theta2 = fit_univariate_lin_model(smartwatch_data[:, 2], smartwatch_data[:, 3])
-    l1 = univariate_loss(smartwatch_data[:, 5], smartwatch_data[:, 7], theta1)
-    l2 = univariate_loss(smartwatch_data[:, 2], smartwatch_data[:, 3], theta2)
-    print(l1, l2)
-    plot_scatterplot_and_line(smartwatch_data[:, 5], smartwatch_data[:, 7], theta1)
-    plot_scatterplot_and_line(smartwatch_data[:, 2], smartwatch_data[:, 3], theta2)
+    theta1 = fit_univariate_lin_model(smartwatch_data[:,5], smartwatch_data[:,7])
+    theta2 = fit_univariate_lin_model(smartwatch_data[:,2], smartwatch_data[:,3])
+    theta3 = fit_univariate_lin_model(smartwatch_data[:,4], smartwatch_data[:,5])
+    print(theta1, theta2, theta3)
+
+    L1 = univariate_loss(smartwatch_data[:,5], smartwatch_data[:,7], theta1)
+    L2 = univariate_loss(smartwatch_data[:,2], smartwatch_data[:,3], theta2)
+    L3 = univariate_loss(smartwatch_data[:,4], smartwatch_data[:,5], theta3)
+    print(L1, L2, L3)
+    
+    r1 = calculate_pearson_correlation(smartwatch_data[:,5], smartwatch_data[:,7])
+    r2 = calculate_pearson_correlation(smartwatch_data[:,2], smartwatch_data[:,3])
+    r3 = calculate_pearson_correlation(smartwatch_data[:,4], smartwatch_data[:,5])
+    print(r1, r2, r3)
+
+    plot_scatterplot_and_line(smartwatch_data[:,5], smartwatch_data[:,7], theta1 , 'exercise_intensity', 'calories', 'Data with linear regression')
+    plot_scatterplot_and_line(smartwatch_data[:,2], smartwatch_data[:,3], theta2 , 'avg_pulse', 'max_pulse', 'Data with linear regression')
+    plot_scatterplot_and_line(smartwatch_data[:,4], smartwatch_data[:,5], theta3 , 'duration', 'exercise_intensity', 'Data with linear regression')
 
     # TODO: Implement Task 1.2.3: Multiple linear regression
     # Select two additional features, compute the design matrix, and fit the multiple linear regression model.

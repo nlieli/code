@@ -54,6 +54,9 @@ def plot_scatterplot_and_line(x: np.ndarray,
     fx = np.linspace(min(x), max(x), x.size)
     fy = theta[0] + theta[1] * fx
     plt.plot(fx, fy)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.title(title)
 
     plt.savefig(f'plots/{figname}.pdf')
     plt.show()
