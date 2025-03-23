@@ -9,7 +9,8 @@ def univariate_loss(x: np.ndarray, y: np.ndarray, theta: np.ndarray) -> float:
     :return: a scalar that represents the loss \mathcal{L}_U(theta)
     """
     # TODO: Implement the univariate loss \mathcal{L}_U(theta) (as specified in Equation 1)
-    return None
+    L = 1 / len(x) * sum((theta[0] + theta[1] * x - y) ** 2)
+    return L
 
 
 def fit_univariate_lin_model(x: np.ndarray, y: np.ndarray) -> np.ndarray:
@@ -22,8 +23,10 @@ def fit_univariate_lin_model(x: np.ndarray, y: np.ndarray) -> np.ndarray:
     N = x.size
     assert N > 1, "There must be at least 2 points given!"
     # TODO: Implement the expressions you have derived in the pen & paper exercise (Task 1.1.1)
-    w = None
-    b = None
+    w = (1 / N * np.dot(x,y) - np.mean(y) * np.mean(x)) / (1 / N * sum(x ** 2) - np.mean(x) ** 2)
+    b = (np.mean(y) - w * np.mean(x))
+    # w = sum(((y-np.mean(y))/x))/(1-sum((np.mean(x)/x)))
+    # b = -w*np.mean(x) + np.mean(y)
     return np.array([b, w])
 
 
@@ -34,7 +37,7 @@ def calculate_pearson_correlation(x: np.ndarray, y: np.ndarray) -> float:
     :return: a scalar that represents the Pearson correlation coefficient between x and y
     """
     # TODO: Implement Pearson correlation coefficient, as shown in Equation 3 (Task 1.1.2).
-    pearson_r = None
+    pearson_r = sum((x - np.mean(x))*(y - np.mean(y))) / (np.sqrt(sum((x - np.mean(x)) ** 2)) * np.sqrt(sum((y - np.mean(y))**2)))
     return pearson_r
 
 

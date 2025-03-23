@@ -33,7 +33,6 @@ def gradient_descent(f: Callable[[np.ndarray, np.ndarray], np.ndarray],
     y_list = np.zeros(num_iters+1)
 
     # TODO: Implement the gradient descent algorithm with a decaying learning rate
-    print("test")
 
     return x_list, y_list, f_list
 

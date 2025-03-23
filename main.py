@@ -36,8 +36,16 @@ def task_1(use_linalg_formulation=False):
     # For each pair, also calculate and report the Pearson correlation coefficient, the theta vector you found, 
     # the MSE, and plot the data points together with the linear function.
     # Repeat the process for 3 pairs of features that do not have a meaningful linear relationship.
-    pass
-
+    # for col in smartwatch_data[]
+    r1 = calculate_pearson_correlation(smartwatch_data[:, 5], smartwatch_data[: ,7])
+    print(r1)
+    theta1 = fit_univariate_lin_model(smartwatch_data[:, 5], smartwatch_data[:, 7])
+    theta2 = fit_univariate_lin_model(smartwatch_data[:, 2], smartwatch_data[:, 3])
+    l1 = univariate_loss(smartwatch_data[:, 5], smartwatch_data[:, 7], theta1)
+    l2 = univariate_loss(smartwatch_data[:, 2], smartwatch_data[:, 3], theta2)
+    print(l1, l2)
+    plot_scatterplot_and_line(smartwatch_data[:, 5], smartwatch_data[:, 7], theta1)
+    plot_scatterplot_and_line(smartwatch_data[:, 2], smartwatch_data[:, 3], theta2)
 
     # TODO: Implement Task 1.2.3: Multiple linear regression
     # Select two additional features, compute the design matrix, and fit the multiple linear regression model.
@@ -162,8 +170,8 @@ def main():
     np.random.seed(46)
 
     task_1(use_linalg_formulation=False)
-    task_2()
-    task_3(initial_plot=True)
+    # task_2()
+    # task_3(initial_plot=True)
 
 
 if __name__ == '__main__':
