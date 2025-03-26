@@ -25,7 +25,14 @@ def plot_scatterplot_and_polynomial(x: np.ndarray,
     # TODO: Implement the plot for the polynomial regression (Task 1.3.2).
     # You should plot both a scatter plot of the data points and the polynomial that you have computed.
     # Feel free to use `compute_polynomial_design_matrix`.
-    pass
+    plt.scatter(x, y)
+    fx = np.linspace(min(x), max(x), x.size)
+    X = compute_polynomial_design_matrix(x, len(theta))
+    fy = X @ theta 
+    plt.plot(fx, fy)
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
 
     plt.savefig(f'plots/{figname}.pdf')
     plt.show()
