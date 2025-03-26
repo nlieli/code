@@ -23,7 +23,11 @@ def create_design_matrix_dataset_2(X_data: np.ndarray) -> np.ndarray:
     :return: Design matrix X
     """
     # TODO: Create the design matrix X for dataset 2
+<<<<<<< HEAD
     X =  X_data
+=======
+    X = X_data 
+>>>>>>> 0a5c9da1b58562fd41dcf697f2d3f3be11930e01
 
     assert X.shape[0] == X_data.shape[0], """The number of rows in the design matrix X should be the same as
                                              the number of data points."""
@@ -38,7 +42,11 @@ def create_design_matrix_dataset_3(X_data: np.ndarray) -> np.ndarray:
     :return: Design matrix X
     """
     # TODO: Create the design matrix X for dataset 3
+<<<<<<< HEAD
     X =  X_data
+=======
+    X = X_data
+>>>>>>> 0a5c9da1b58562fd41dcf697f2d3f3be11930e01
 
     assert X.shape[0] == X_data.shape[0], """The number of rows in the design matrix X should be the same as
                                              the number of data points."""
