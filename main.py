@@ -37,7 +37,10 @@ def task_1(use_linalg_formulation=False):
     # the MSE, and plot the data points together with the linear function.
     # Repeat the process for 3 pairs of features that do not have a meaningful linear relationship.
     # for col in smartwatch_data[]
+    print("---- 1.1.2 ----")
     theta1 = fit_univariate_lin_model(smartwatch_data[:,5], smartwatch_data[:,7])
+    X = compute_design_matrix(smartwatch_data[:, 5])
+    thetad = fit_multiple_lin_model(X, smartwatch_data[:, 7])
     theta2 = fit_univariate_lin_model(smartwatch_data[:,2], smartwatch_data[:,3])
     theta3 = fit_univariate_lin_model(smartwatch_data[:,4], smartwatch_data[:,5])
     print(theta1, theta2, theta3)
@@ -55,6 +58,27 @@ def task_1(use_linalg_formulation=False):
     plot_scatterplot_and_line(smartwatch_data[:,5], smartwatch_data[:,7], theta1 , 'exercise_intensity', 'calories', 'Data with linear regression Exercise_intensity vs Calories', 'Data with linear regression Exercise_intensity vs Calories')
     plot_scatterplot_and_line(smartwatch_data[:,2], smartwatch_data[:,3], theta2 , 'avg_pulse', 'max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse')
     plot_scatterplot_and_line(smartwatch_data[:,4], smartwatch_data[:,5], theta3 , 'duration', 'exercise_intensity', 'Data with linear regression Duration vs Exercise_intensity', 'Data with linear regression Duration vs Exercise_intensity')
+    
+    # 1.1.3
+    print("---- 1.1.3 ----")
+    theta1 = fit_univariate_lin_model(smartwatch_data[:,0], smartwatch_data[:,1])
+    theta2 = fit_univariate_lin_model(smartwatch_data[:,3], smartwatch_data[:,4])
+    theta3 = fit_univariate_lin_model(smartwatch_data[:,0], smartwatch_data[:,2])
+    print(theta1, theta2, theta3)
+
+    L1 = univariate_loss(smartwatch_data[:,0], smartwatch_data[:,1], theta1)
+    L2 = univariate_loss(smartwatch_data[:,3], smartwatch_data[:,4], theta2)
+    L3 = univariate_loss(smartwatch_data[:,0], smartwatch_data[:,2], theta3)
+    print(L1, L2, L3)
+    
+    r1 = calculate_pearson_correlation(smartwatch_data[:,0], smartwatch_data[:,1])
+    r2 = calculate_pearson_correlation(smartwatch_data[:,3], smartwatch_data[:,4])
+    r3 = calculate_pearson_correlation(smartwatch_data[:,0], smartwatch_data[:,2])
+    print(r1, r2, r3)
+
+    plot_scatterplot_and_line(smartwatch_data[:,0], smartwatch_data[:,1], theta1 , 'hours_sleep', 'hours_work', 'Data with linear regression hours slept vs hours worked', 'Data with linear regression hours slept vs hours worked')
+    plot_scatterplot_and_line(smartwatch_data[:,3], smartwatch_data[:,4], theta2 , 'max_pulse', 'exercise_duration', 'Data with linear regression Max_pulse vs exercise_duration', 'Data with linear regression max_pulse vs exercise_duration')
+    plot_scatterplot_and_line(smartwatch_data[:,0], smartwatch_data[:,2], theta3 , 'hours_sleep', 'average_pulse', 'Data with linear regression hours slept vs average pulse', 'Data with linear regression hours slept vs average pulse')
 
     # TODO: Implement Task 1.2.3: Multiple linear regression
     # Select two additional features, compute the design matrix, and fit the multiple linear regression model.
@@ -178,7 +202,7 @@ def task_3(initial_plot=True):
 def main():
     np.random.seed(46)
 
-    task_1(use_linalg_formulation=False)
+    task_1(use_linalg_formulation=True)
     # task_2()
     # task_3(initial_plot=True)
 

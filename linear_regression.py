@@ -48,7 +48,7 @@ def compute_design_matrix(data: np.ndarray) -> np.ndarray:
     """
 
     # TODO: Implement the design matrix for multiple linear regression (Task 1.2.2)
-    design_matrix = None
+    design_matrix = np.c_[np.ones(data.shape[0]), data]
     return design_matrix
 
 
@@ -73,7 +73,7 @@ def fit_multiple_lin_model(X: np.ndarray, y: np.ndarray) -> np.ndarray:
 
     # TODO: Implement the expressions you have derived in the pen & paper exercise (Task 1.2.1). 
     # Note: Use the pinv function.
-    theta = None
+    theta = pinv(X) @ y
     return theta
 
 
