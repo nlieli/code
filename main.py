@@ -53,6 +53,8 @@ def task_1(use_linalg_formulation=False):
             theta = fit_multiple_lin_model(X, smartwatch_data[:, sets[1]]) 
         L = univariate_loss(smartwatch_data[:, sets[0]], smartwatch_data[:, sets[1]], theta)
         plot_scatterplot_and_line(smartwatch_data[:, sets[0]], smartwatch_data[:, sets[1]], theta, *labels[idx], labels[idx][-1])
+        print(theta)
+        print(L)
 
     print("---- 1.1.3 ----")
     data_sets = [[0, 1], [3, 4], [0, 2]]
@@ -70,6 +72,8 @@ def task_1(use_linalg_formulation=False):
             theta = fit_multiple_lin_model(X, smartwatch_data[:, sets[1]]) 
         L = univariate_loss(smartwatch_data[:, sets[0]], smartwatch_data[:, sets[1]], theta)
         plot_scatterplot_and_line(smartwatch_data[:, sets[0]], smartwatch_data[:, sets[1]], theta, *labels[idx], labels[idx][-1])
+        print(theta)
+        print(L)
 
     
 

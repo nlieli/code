@@ -60,7 +60,9 @@ def multiple_loss(X: np.ndarray, y: np.ndarray, theta: np.ndarray) -> float:
     :return: a scalar that represents the loss \mathcal{L}_M(theta)
     """
     # TODO: Implement the multiple regression loss \mathcal{L}_M(theta) (as specified in Equation 5)
-    return None
+    N = y.size
+    L = 1 / N * sum((X @ theta - y) ** 2) 
+    return L
 
 
 def fit_multiple_lin_model(X: np.ndarray, y: np.ndarray) -> np.ndarray:
