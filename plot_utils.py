@@ -26,8 +26,8 @@ def plot_scatterplot_and_polynomial(x: np.ndarray,
     # You should plot both a scatter plot of the data points and the polynomial that you have computed.
     # Feel free to use `compute_polynomial_design_matrix`.
     plt.scatter(x, y)
-    fx = np.linspace(min(x), max(x), x.size)
-    X = compute_polynomial_design_matrix(fx, len(theta) - 1)
+    fx = np.linspace(min(x), max(x), 1000)
+    X = compute_polynomial_design_matrix(fx, len(theta)-1)
     fy = X @ theta 
     plt.plot(fx, fy)
     plt.title(title)

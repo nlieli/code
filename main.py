@@ -98,16 +98,25 @@ def task_1(use_linalg_formulation=False):
     # For the feature-target pair of choice, compute the polynomial design matrix with an appropriate degree K, 
     # fit the model, and plot the data points together with the polynomial function.
     # Report the MSE and the theta vector.
-    X = compute_polynomial_design_matrix(smartwatch_data[:,5],2)
+    X= compute_polynomial_design_matrix(smartwatch_data[:,5], 2)
     theta1_3_2 = fit_multiple_lin_model(X, smartwatch_data[:,7])
     L1_3_2  = multiple_loss(X, smartwatch_data[:,7], theta1_3_2)
     print(f'Polynomial loss: {L1_3_2}, theta: {theta1_3_2}')
     plot_scatterplot_and_polynomial(smartwatch_data[:,5], smartwatch_data[:, 7], theta1_3_2, 'exercise_intensity', 'calories', 'Data with polynomial regression Exercise_intensity vs Calories', 'Data with polynomial regression Exercise_intensity vs Calories')
-
+    
+    # 1.3.2
+    print("---- 1.3.3 ----")
     # TODO: Implement Task 1.3.3: Use x_small and y_small to fit a polynomial model.
     # Find and report the smallest K that gets zero loss. Plot the data points and the polynomial function.
     x_small = smartwatch_data[:5, column_to_id['duration']]
     y_small = smartwatch_data[:5, column_to_id['calories']]
+    X = compute_polynomial_design_matrix(x_small, 4)
+    theta1_3_3 = fit_multiple_lin_model(X, y_small)
+    L1_3_3 = multiple_loss(X, y_small, theta1_3_3)
+    print(f'Polynomial loss: {L1_3_3}, theta: {theta1_3_3}')
+    plot_scatterplot_and_polynomial(x_small, y_small, theta1_3_3, 'duration', 'calories', 'Data with polynomial regression Duration vs Calories', 'Data with polynomial regression Duration vs Calories')
+
+
 
 def task_2():
     print('\n---- Task 2 ----')
