@@ -92,8 +92,6 @@ def task_1(use_linalg_formulation=False):
     print(f"Multiple univariate loss : {L1_2_3}, Linear univariate loss: {L1_1} ,theta1_2_3: {theta1_2_3}, theta1_1: {theta1_1}")
     plot_scatterplot_and_line(smartwatch_data[:,2], smartwatch_data[:,3], theta1_2_3 , 'avg_pulse', 'max_pulse', 'Data with multiple linear regression Avg_pulse vs Max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse')
     
-    pass
-
     # 1.3.2
     print("---- 1.3.2 ----")
     # TODO: Implement Task 1.3.2: Polynomial regression
@@ -105,15 +103,11 @@ def task_1(use_linalg_formulation=False):
     L1_3_2  = multiple_loss(X, smartwatch_data[:,7], theta1_3_2)
     print(f'Polynomial loss: {L1_3_2}, theta: {theta1_3_2}')
     plot_scatterplot_and_polynomial(smartwatch_data[:,5], smartwatch_data[:, 7], theta1_3_2, 'exercise_intensity', 'calories', 'Data with polynomial regression Exercise_intensity vs Calories', 'Data with polynomial regression Exercise_intensity vs Calories')
-    pass
-
 
     # TODO: Implement Task 1.3.3: Use x_small and y_small to fit a polynomial model.
     # Find and report the smallest K that gets zero loss. Plot the data points and the polynomial function.
     x_small = smartwatch_data[:5, column_to_id['duration']]
     y_small = smartwatch_data[:5, column_to_id['calories']]
-    pass
-
 
 def task_2():
     print('\n---- Task 2 ----')
