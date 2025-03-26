@@ -80,9 +80,22 @@ def task_1(use_linalg_formulation=False):
     plot_scatterplot_and_line(smartwatch_data[:,3], smartwatch_data[:,4], theta2 , 'max_pulse', 'exercise_duration', 'Data with linear regression Max_pulse vs exercise_duration', 'Data with linear regression max_pulse vs exercise_duration')
     plot_scatterplot_and_line(smartwatch_data[:,0], smartwatch_data[:,2], theta3 , 'hours_sleep', 'average_pulse', 'Data with linear regression hours slept vs average pulse', 'Data with linear regression hours slept vs average pulse')
 
+    
+
+
+    # 1.2.3
+    print("---- 1.2.3 ----")
     # TODO: Implement Task 1.2.3: Multiple linear regression
     # Select two additional features, compute the design matrix, and fit the multiple linear regression model.
     # Report the MSE and the theta vector.
+    data = smartwatch_data[:, [2, 5, 6]]
+    X = compute_design_matrix(data)
+    theta1_2_3 = fit_multiple_lin_model(X, smartwatch_data[:,3]) 
+    theta1_1 = fit_univariate_lin_model(smartwatch_data[:,2], smartwatch_data[:,3])
+    L = univariate_loss(smartwatch_data[:,2], smartwatch_data[:,3], theta1_2_3)
+    print(f"univariate loss: {L}, theta1_2_3: {theta1_2_3}, theta1_1: {theta1_1}")
+    plot_scatterplot_and_line(smartwatch_data[:,2], smartwatch_data[:,3], theta1_2_3 , 'avg_pulse', 'max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse', 'Data with linear regression Avg_pulse vs Max_pulse')
+    
     pass
 
 
