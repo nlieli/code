@@ -98,7 +98,7 @@ def task_1(use_linalg_formulation=False):
     # For the feature-target pair of choice, compute the polynomial design matrix with an appropriate degree K, 
     # fit the model, and plot the data points together with the polynomial function.
     # Report the MSE and the theta vector.
-    X= compute_polynomial_design_matrix(smartwatch_data[:,5],2)
+    X = compute_polynomial_design_matrix(smartwatch_data[:,5],2)
     theta1_3_2 = fit_multiple_lin_model(X, smartwatch_data[:,7])
     L1_3_2  = multiple_loss(X, smartwatch_data[:,7], theta1_3_2)
     print(f'Polynomial loss: {L1_3_2}, theta: {theta1_3_2}')
@@ -116,18 +116,18 @@ def task_2():
         print(f'---- Logistic regression task {task} ----')
         if task == 1:
             # TODO: Load the data set 1 (X-1-data.npy and targets-dataset-1.npy)
-            X_data = None # TODO: change me
-            y = None # TODO: change me
+            X_data = np.load('data/X-1-data.npy') # TODO: change me
+            y = np.load('data/targets-dataset-1.npy') # TODO: change me
             create_design_matrix = create_design_matrix_dataset_1
         elif task == 2:
             # TODO: Load the data set 2 (X-1-data.npy and targets-dataset-2.npy)
-            X_data = None # TODO: change me
-            y = None # TODO: change me
+            X_data = np.load('data/X-1-data.npy') # TODO: change me
+            y = np.load('data/targets-dataset-2.npy') # TODO: change me
             create_design_matrix = create_design_matrix_dataset_2
         elif task == 3:
             # Load the data set 3 (X-2-data.npy and targets-dataset-3.npy)
-            X_data = None # TODO: change me
-            y = None # TODO: change me
+            X_data = np.load('data/X-2-data.npy')# TODO: change me
+            y = np.load('data/targets-dataset-3.npy') # TODO: change me
             create_design_matrix = create_design_matrix_dataset_3
         else:
             raise ValueError('Task not found.')
@@ -211,8 +211,8 @@ def task_3(initial_plot=True):
 def main():
     np.random.seed(46)
 
-    task_1(use_linalg_formulation=True)
-    # task_2()
+    # task_1(use_linalg_formulation=True)
+    task_2()
     # task_3(initial_plot=True)
 
 
