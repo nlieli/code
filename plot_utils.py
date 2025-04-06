@@ -219,7 +219,11 @@ def plot_function_over_iterations(f_list: np.ndarray,
     # TODO: Implement the plot in Task 3.9.
     # You should plot the function value over iterations.
     # Do not forget to label the plot (xlabel, ylabel, title)
-    pass
+    x = np.arange(len(f_list))
+    plt.plot(x, f_list)
+    plt.xlabel("Iterations")
+    plt.ylabel("Function Value")
+    plt.title("Function Values over Iterations")
 
     plt.savefig(f'plots/{figname}.pdf')
     plt.show()

@@ -8,7 +8,7 @@ def create_design_matrix_dataset_1(X_data: np.ndarray) -> np.ndarray:
     :return: Design matrix X
     """
     # TODO: Create the design matrix X for dataset 1
-    X = X_data
+    X = np.c_[X_data, X_data[:, 0] * X_data[:, 1], X_data[:, 0] ** 2, X_data[:, 1] ** 2, X_data[:, 0] ** 2 * X_data[:, 1] ** 2]
 
     assert X.shape[0] == X_data.shape[0], """The number of rows in the design matrix X should be the same as
                                              the number of data points."""
@@ -23,7 +23,7 @@ def create_design_matrix_dataset_2(X_data: np.ndarray) -> np.ndarray:
     :return: Design matrix X
     """
     # TODO: Create the design matrix X for dataset 2
-    X = X_data
+    X = np.c_[X_data, X_data[:, 0] ** 2, X_data[:, 1] ** 2]
 
     assert X.shape[0] == X_data.shape[0], """The number of rows in the design matrix X should be the same as
                                              the number of data points."""
@@ -38,7 +38,7 @@ def create_design_matrix_dataset_3(X_data: np.ndarray) -> np.ndarray:
     :return: Design matrix X
     """
     # TODO: Create the design matrix X for dataset 3
-    X = X_data
+    X = np.c_[X_data, X_data[:, 0] ** 2, X_data[:, 0] ** 3, X_data[:, 0] ** 4, X_data[:, 0] ** 5, X_data[:, 0] ** 6, X_data[:, 0] ** 7, X_data[:, 0] ** 8]
     
     assert X.shape[0] == X_data.shape[0], """The number of rows in the design matrix X should be the same as
                                              the number of data points."""
@@ -52,4 +52,4 @@ def logistic_regression_params_sklearn():
     Read the docs at https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
     """
     # TODO: Try different `penalty` parameters for the LogisticRegression model
-    return {'penalty': 'l2'}
+    return {'penalty': 'l2', 'solver': 'lbfgs'}

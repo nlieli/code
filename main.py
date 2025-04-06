@@ -148,20 +148,21 @@ def task_2():
 
         # TODO: Split the dataset using the `train_test_split` function.
         # The parameter `random_state` should be set to 0.
-        X_train, X_test, y_train, y_test = None, None, None, None
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
         print(f'Shapes of: X_train {X_train.shape}, X_test {X_test.shape}, y_train {y_train.shape}, y_test {y_test.shape}')
 
         # Train the classifier
         custom_params = logistic_regression_params_sklearn()
         clf = LogisticRegression(**custom_params)
         # TODO: Fit the model to the data using the `fit` method of the classifier `clf`
-        acc_train, acc_test = None, None # TODO: Use the `score` method of the classifier `clf` to calculate accuracy
+        clf.fit(X_train, y_train)
+        acc_train, acc_test = clf.score(X_train, y_train), clf.score(X_test, y_test) # TODO: Use the `score` method of the classifier `clf` to calculate accuracy
 
         print(f'Train accuracy: {acc_train * 100:.2f}%. Test accuracy: {100 * acc_test:.2f}%.')
         
-        yhat_train = None # TODO: Use the `predict_proba` method of the classifier `clf` to
+        yhat_train = clf.predict_proba(X_train) # TODO: Use the `predict_proba` method of the classifier `clf` to
                           #  calculate the predicted probabilities on the training set
-        yhat_test = None # TODO: Use the `predict_proba` method of the classifier `clf` to
+        yhat_test = clf.predict_proba(X_test)# TODO: Use the `predict_proba` method of the classifier `clf` to
                          #  calculate the predicted probabilities on the test set
 
         # TODO: Use the `log_loss` function to calculate the cross-entropy loss
@@ -169,7 +170,7 @@ def task_2():
         #  You need to pass (1) the true binary labels and (2) the probability of the *positive* class to `log_loss`.
         #  Since the output of `predict_proba` is of shape (n_samples, n_classes), you need to select the probabilities
         #  of the positive class by indexing the second column (index 1).
-        loss_train, loss_test = None, None
+        loss_train, loss_test = log_loss(y_train, yhat_train),log_loss(y_test, yhat_test) 
         print(f'Train loss: {loss_train}. Test loss: {loss_test}.')
 
         plot_logistic_regression(clf, create_design_matrix, X_train, f'(Dataset {task}) Train set predictions',
@@ -178,7 +179,7 @@ def task_2():
                                  figname=f'logreg_test{task}')
 
         # TODO: Print theta vector (and also the bias term). Hint: Check the attributes of the classifier
-        classifier_weights, classifier_bias = None, None
+        classifier_weights, classifier_bias = clf.coef_,clf.intercept_ 
         print(f'Parameters: {classifier_weights}, {classifier_bias}')
 
 
@@ -188,8 +189,8 @@ def task_3(initial_plot=True):
     np.random.seed(46)
 
     # TODO: Choose a random starting point using samples from a standard normal distribution
-    x0 = None
-    y0 = None
+    x0 = np.random.normal(0, 1) 
+    y0 = np.random.normal(0, 1)
     print(f'Starting point: {x0:.4f}, {y0:.4f}')
 
     if initial_plot:
@@ -199,30 +200,32 @@ def task_3(initial_plot=True):
 
     # TODO: Check if gradient_rastrigin is correct at (x0, y0). 
     # To do this, print the true gradient and the numerical approximation.
-    pass
+    print(f'Gradient at starting point: {gradient_rastrigin(x0, y0)}')
+    print(f'Gradient at starting point (numerical approximation): {finite_difference_gradient_approx(rastrigin, x0, y0)}')
 
     # TODO: Call the function `gradient_descent` with a chosen configuration of hyperparameters,
     #  i.e., learning_rate, lr_decay, and num_iters. Try out lr_decay=1 as well as values for lr_decay that are < 1.
-    x_list, y_list, f_list = None, None, None
+    x_list, y_list, f_list = gradient_descent(rastrigin, gradient_rastrigin, x0, y0, 0.02, 1, 30)
 
     # Print the point that is found after `num_iters` iterations
     print(f'Solution found: f({x_list[-1]:.4f}, {y_list[-1]:.4f})= {f_list[-1]:.4f}' )
     print(f'Global optimum: f(0, 0)= {rastrigin(0, 0):.4f}')
+    
 
     # Here we plot the contour of the function with the path taken by the gradient descent algorithm
     plot_2d_contour(rastrigin, starting_point=(x0, y0), global_min=(0, 0), 
                     x_list=x_list, y_list=y_list)
 
     # TODO: Create a plot f(x_t, y_t) over iterations t by calling `plot_function_over_iterations` with `f_list`
-    pass
+    plot_function_over_iterations(f_list)
 
 
 def main():
     np.random.seed(46)
 
     # task_1(use_linalg_formulation=True)
-    task_2()
-    # task_3(initial_plot=True)
+    # task_2()
+    task_3(initial_plot=True)
 
 
 if __name__ == '__main__':
